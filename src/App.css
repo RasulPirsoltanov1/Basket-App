@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Store{
+  padding: 20px;
+  margin: 20px;
+}
+.Basket{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom:40px ;
+}
