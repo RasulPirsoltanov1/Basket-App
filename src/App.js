@@ -7,12 +7,11 @@ import { List, ThemeIcon } from '@mantine/core';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
 import { Input } from '@mantine/core';
 import { IconAt } from '@tabler/icons-react';
-
-
+import { IconSearch } from '@tabler/icons-react';
 const storeItems = [
   {
     id: 1,
-    img:"iphone11",
+    img: "iphone11",
     name: "Iphone 11",
     price: 1200,
     description: "With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
@@ -55,8 +54,8 @@ function App() {
   const [basketItems, setBasketItems] = useState([]);
   let [search, setSearch] = useState("");
 
-  let filteredItems = basketItems.filter(({ name}, index) => {
-    return name.indexOf(search) >= 0;
+  let filteredItems = storeItems.filter(({ name }, index) => {
+    return name.toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) >= 0;
   });
 
   const AddBasket = (index) => {
@@ -66,21 +65,26 @@ function App() {
   }
   return (
     <Container>
+      <div className='SearchBar'>
+        <Input
+          icon={ <IconSearch/>}
+          placeholder="Search..."
+          radius="xl"
+          size="md"
+          onChange={(e) => setSearch(e.target.value)}
+          className='search'
+          value={search}
+        />
+        <Button color='blue' onClick={()=>setSearch("")}>Clear</Button>
+      </div>
       <SimpleGrid cols={3} className='Store'>
         {
-          storeItems.map(({ name, price, description, id ,img }, i) => {
+          filteredItems.map(({ name, price, description, id, img }, i) => {
             return (<Card key={"cardKey" + i} name={name} img={img} price={price} description={description} onAdd={() => AddBasket(id)}></Card>);
           })
         }
       </SimpleGrid>
       <br></br>
-      <Input
-        icon={<IconAt />}
-        placeholder="Search..."
-        radius="xl"
-        size="md"
-        onChange={(e) => setSearch(e.target.value)}
-      />
       <br></br>
       <h2>Basket</h2>
       <List
@@ -95,7 +99,7 @@ function App() {
         className='Basket'
       >
         {
-          filteredItems.map(({ name, price }) => {
+          basketItems.map(({ name, price }) => {
             console.log(name + price);
             return <List.Item>Product Name: {name} ||   Price: {price}</List.Item>
           })
