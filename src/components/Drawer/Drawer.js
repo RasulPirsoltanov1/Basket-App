@@ -8,7 +8,7 @@ function DrawerComponent({ basketItems,count }) {
 
     return (
         <>
-            <Drawer className='Drawer' position="right" opened={opened} onClose={close} title="Basket Items" color='blue'>
+            <Drawer  position="right" opened={opened} onClose={close} title="Basket Items" color='blue'>
                 <List
                     spacing="xs"
                     size="sm"
@@ -29,7 +29,7 @@ function DrawerComponent({ basketItems,count }) {
             </Drawer>
 
             <Group position="center">
-                <Button onClick={open} className='DrawerBtn'>View {count} Basket Items</Button>
+                <Button onClick={open} className='DrawerBtn'>View Basket Items</Button>
             </Group>
         </>
     );

@@ -1,5 +1,5 @@
 import './App.css';
-import { Container, Stack } from '@mantine/core';
+import { Container, Indicator } from '@mantine/core';
 import Card from './components/Card';
 import { SimpleGrid, Button } from '@mantine/core';
 import { useState } from 'react';
@@ -68,7 +68,7 @@ function App() {
     <Container className='Container'>
       <div className='SearchBar'>
         <Input
-          icon={ <IconSearch/>}
+          icon={<IconSearch />}
           placeholder="Search..."
           radius="xl"
           size="md"
@@ -76,8 +76,12 @@ function App() {
           className='search'
           value={search}
         />
-        <Button color='yellow' onClick={()=>setSearch("")}>Clear</Button>
-        <Drawer basketItems={basketItems}  count={basketItems.length}></Drawer>
+        <Button color='yellow' onClick={() => setSearch("")}>Clear</Button>
+        <div className='Drawer'> 
+        <Indicator label={basketItems.length}>
+          <Drawer basketItems={basketItems} count={basketItems.length}></Drawer>
+        </Indicator>
+        </div>
       </div>
       <SimpleGrid cols={3} className='Store'>
         {
@@ -89,7 +93,7 @@ function App() {
       <br></br>
       <br></br>
       <h2>Basket</h2>
-      
+
     </Container>
 
   );

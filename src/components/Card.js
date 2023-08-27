@@ -26,8 +26,8 @@ const CustomCard = ({name,img,price,description,onAdd}) => {
             {description}
         </Text>
 
-        <Button variant="light" color="blue" fullWidth mt="md" radius="md" className='CardButton' onClick={onAdd}>
-            Book classic tour now
+        <Button variant="light" color="green" fullWidth mt="md" radius="md" className='CardButton' onClick={onAdd}>
+           Add to Basket
         </Button>
     </Card>)
 }
