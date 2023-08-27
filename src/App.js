@@ -8,6 +8,7 @@ import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
 import { Input } from '@mantine/core';
 import { IconAt } from '@tabler/icons-react';
 import { IconSearch } from '@tabler/icons-react';
+import Drawer from './components/Drawer/Drawer';
 const storeItems = [
   {
     id: 1,
@@ -64,7 +65,7 @@ function App() {
     })[0]]);
   }
   return (
-    <Container>
+    <Container className='Container'>
       <div className='SearchBar'>
         <Input
           icon={ <IconSearch/>}
@@ -75,7 +76,8 @@ function App() {
           className='search'
           value={search}
         />
-        <Button color='blue' onClick={()=>setSearch("")}>Clear</Button>
+        <Button color='yellow' onClick={()=>setSearch("")}>Clear</Button>
+        <Drawer basketItems={basketItems}  count={basketItems.length}></Drawer>
       </div>
       <SimpleGrid cols={3} className='Store'>
         {
@@ -87,24 +89,7 @@ function App() {
       <br></br>
       <br></br>
       <h2>Basket</h2>
-      <List
-        spacing="xs"
-        size="sm"
-        center
-        icon={
-          <ThemeIcon color="teal" size={24} radius="xl">
-            <IconCircleCheck size="1rem" />
-          </ThemeIcon>
-        }
-        className='Basket'
-      >
-        {
-          basketItems.map(({ name, price }) => {
-            console.log(name + price);
-            return <List.Item>Product Name: {name} ||   Price: {price}</List.Item>
-          })
-        }
-      </List>
+      
     </Container>
 
   );
