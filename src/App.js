@@ -12,6 +12,7 @@ import { IconAt } from '@tabler/icons-react';
 const storeItems = [
   {
     id: 1,
+    img:"iphone11",
     name: "Iphone 11",
     price: 1200,
     description: "With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
@@ -19,12 +20,28 @@ const storeItems = [
   {
     id: 2,
     name: "Samsung S23",
+    img: "samsungs23",
     price: 2300,
     description: "wreg  fsdj sfbfj klsadsasd asdasda asd ndsm asb salfs sdlhf "
   },
   {
     id: 3,
     name: "Xiomi mi 12",
+    img: "xiomimi12",
+    price: 990,
+    description: "asdasds adsadsadas d sdasdasd dasdasdasbjs nddsadm asasdasb salfssadsad  dasdasdsdlhf "
+  },
+  {
+    id: 23,
+    name: "Motorola X5",
+    img: "motorolax5",
+    price: 990,
+    description: "asdasds adsadsadas d sdasdasd dasdasdasbjs nddsadm asasdasb salfssadsad  dasdasdsdlhf "
+  },
+  {
+    id: 32,
+    name: "Oneplus 10T",
+    img: "oneplus10t",
     price: 990,
     description: "asdasds adsadsadas d sdasdasd dasdasdasbjs nddsadm asasdasb salfssadsad  dasdasdsdlhf "
   }
@@ -51,8 +68,8 @@ function App() {
     <Container>
       <SimpleGrid cols={3} className='Store'>
         {
-          storeItems.map(({ name, price, description, id }, i) => {
-            return (<Card key={"cardKey" + i} name={name} price={price} description={description} onAdd={() => AddBasket(id)}></Card>);
+          storeItems.map(({ name, price, description, id ,img }, i) => {
+            return (<Card key={"cardKey" + i} name={name} img={img} price={price} description={description} onAdd={() => AddBasket(id)}></Card>);
           })
         }
       </SimpleGrid>
